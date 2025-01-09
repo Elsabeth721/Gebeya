@@ -80,4 +80,5 @@ cd path/to/your/directory
 ```
 node asynchronousChallenge.js
 ```
-
+### Expected output:
+![Terminal output](https://github.com/Elsabeth721/Gebeya/blob/main/Frontend/AsynchrounousChallenge/Screenshot%202025-01-09%20075007.png)
