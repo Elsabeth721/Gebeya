@@ -4,7 +4,7 @@ import DarkModeToggle from "./darkMode";
 
 const Sidebar = () => {
   return (
-    <div className="h-screen bg-slate-300 dark:bg-slate-900 w-64 text-gray-900 dark:text-gray-300 p-5">
+    <div className="h-screen bg-slate-300 dark:bg-slate-900 w-64 text-gray-900 dark:text-gray-300 p-5 sticky top-0 ">
       <h2 className="text-2xl font-bold mb-6">Personal Expense Tracker</h2>
       <ul>
         <li className="mb-4">
