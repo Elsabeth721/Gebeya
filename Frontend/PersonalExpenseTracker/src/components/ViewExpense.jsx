@@ -4,7 +4,7 @@ const expenses = [
   { id: 1, name: 'Groceries', amount: 50, date: '2025-01-08', category: 'Food' },
   { id: 2, name: 'Transport', amount: 15, date: '2025-01-07', category: 'Travel' },
   { id: 3, name: 'Rent', amount: 500, date: '2025-01-01', category: 'Housing' },
-// I will use local storage and fetch the data from the locallly stored 
+// I will use local storage and fetch the data from the locallly stored  
 ];
 
 const ViewExpense = () => {
