@@ -1,42 +1,39 @@
-import React from 'react';
-
-const expenses = [
-  { id: 1, name: 'Groceries', amount: 50, date: '2025-01-08', category: 'Food' },
-  { id: 2, name: 'Transport', amount: 15, date: '2025-01-07', category: 'Travel' },
-  { id: 3, name: 'Rent', amount: 500, date: '2025-01-01', category: 'Housing' },
-// I will use local storage and fetch the data from the locallly stored  
-];
+import React, { useEffect, useState } from 'react'
 
 const ViewExpense = () => {
+  const [expenselist, setExpenselist]= useState([]);
+
+  useEffect(()=>{
+    const storedExpenses= JSON.parse(localStorage.getItem('expenselist')) || [];
+    setExpenselist(storedExpenses);
+  }, []);
   return (
-    <div className="bg-mainBackground min-h-screen p-6">
-      <h1 className="text-3xl font-bold text-titleText mb-6">View Expenses</h1>
-      <div className="bg-containerBackground shadow-lg rounded-lg p-4">
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white">
-            <thead>
-              <tr>
-                <th className="py-2 text-left text-subtitleText font-medium">Expense Name</th>
-                <th className="py-2 text-left text-subtitleText font-medium">Amount</th>
-                <th className="py-2 text-left text-subtitleText font-medium">Date</th>
-                <th className="py-2 text-left text-subtitleText font-medium">Category</th>
-              </tr>
-            </thead>
-            <tbody>
-              {expenses.map((expense) => (
-                <tr key={expense.id} className="border-b">
-                  <td className="py-2 px-4 text-mainDarkBackground">{expense.name}</td>
-                  <td className="py-2 px-4 text-mainDarkBackground">${expense.amount}</td>
-                  <td className="py-2 px-4 text-mainDarkBackground">{expense.date}</td>
-                  <td className="py-2 px-4 text-mainDarkBackground">{expense.category}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <div >
+      <h1 className='text-center font-bold text-3xl mb-3 p-4'>View Expenses</h1>
+      <div className='p-5 overflow-x-auto bg-white dark:bg-black rounded-lg shadow-lg'>
+        <table className='min-w-full '>
+          <thead >
+          <tr className='border-b border-gray-200 dark:bg-border-gray-600'>
+            <th className='py-2 text-left'>Title</th>
+            <th className='py-2 text-left'>Category</th>
+            <th className='py-2 text-left'>Amount</th>
+            <th className='py-2 text-left'>Date</th>
+          </tr>
+          </thead>
+          <tbody>
+            {expenselist.map((expense, index)=>(
+            <tr key={index} className='border-b border-gray-200 dark:bg-border-gray-600 '>
+              <td className='py-2 px-4'>{expense.name}</td>
+              <td className='py-2 px-4'>{expense.category}</td>
+              <td className='py-2 px-4'>{expense.amount}</td>
+              <td className='py-2 px-4'>{expense.date}</td>
+            </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ViewExpense;
+export default ViewExpense
