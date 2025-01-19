@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
 const Filter = () => {
   const [expenselist, setExpenselist]=useState([]);
   const [filteredExpenses, setFilteredExpenses]= useState([]);
