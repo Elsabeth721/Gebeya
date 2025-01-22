@@ -21,9 +21,9 @@ const AddExpense = () => {
     alert("Expense added!!!");
   };
   return (
-    <div className="min-h-screen p-6 items-center justify-center">
+    <div className="text-black dark:text-white min-h-screen p-6 items-center justify-center">
       <h1 className="mb-4 text-center text-3xl font-bold">Add Expense</h1>
-      <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="bg-white dark:bg-[#2A2929] rounded-lg shadow-lg p-4">
         <form onSubmit={handleSubmit} className="">
           <div className="mb-4">
             <label className="block mb-2">Expense Title</label>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Bar, Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, Colors } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
@@ -17,14 +17,14 @@ const Dashboard = () => {
   // Group expenses by month
   const groupedByMonth = expenses.reduce((acc, expense) => {
     const month = new Date(expense.date).getMonth();
-    acc[month] = (acc[month] || 0) + expense.amount;
+    acc[month] = (acc[month] || 0) + parseFloat(expense.amount); // Ensure amount is treated as a number
     return acc;
   }, {});
 
   // Group expenses by category
   const groupedByCategory = expenses.reduce((acc, expense) => {
     if (allowedCategories.includes(expense.category)) {
-      acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
+      acc[expense.category] = (acc[expense.category] || 0) + parseFloat(expense.amount); // Ensure amount is treated as a number
     }
     return acc;
   }, {});
@@ -73,7 +73,7 @@ const Dashboard = () => {
           <Doughnut data={doughnutData} />
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

@@ -24,7 +24,7 @@ const Filter = () => {
   };
 
   return (
-    <div>
+    <div className='text-black dark:text-white '>
       <h1 className='font-bold text-3xl mb-4 text-center'>Filter Expense</h1>
       <div>
         <label htmlFor="category" className='block mb-2'>Select Category</label>
@@ -38,7 +38,7 @@ const Filter = () => {
       </div>
       {/* displaying the data that is filtered */}
 
-      <div className='overflow-x-auto bg-white mt-5 rounded-lg shadow-lg'>
+      <div className='overflow-x-auto bg-white dark:bg-[#2A2929] mt-5 rounded-lg shadow-lg'>
         <table className='min-w-full border'>
           <thead className=''>
             <tr className='border-b border-gray-200 dark:bg-border-gray-600'>

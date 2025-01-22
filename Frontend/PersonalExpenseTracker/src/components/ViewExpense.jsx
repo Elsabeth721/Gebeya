@@ -8,7 +8,7 @@ const ViewExpense = () => {
     setExpenselist(storedExpenses);
   }, []);
   return (
-    <div >
+    <div className='text-black dark:text-white'>
       <h1 className='text-center font-bold text-3xl mb-3 p-4'>View Expenses</h1>
       <div className='p-5 overflow-x-auto bg-white dark:bg-black rounded-lg shadow-lg'>
         <table className='min-w-full '>
