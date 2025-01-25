@@ -1,34 +1,43 @@
-import React, { useEffect, useState } from 'react'
-const Filter = () => {
-  const [expenselist, setExpenselist]=useState([]);
-  const [filteredExpenses, setFilteredExpenses]= useState([]);
-  const [selectedCategory, setSelectedCategory]= useState([]);
+import React, { useEffect, useState } from 'react';
+import ExpenseTable from './ExpenseTable';
 
-  useEffect(()=>{
-    const storedExpenses = JSON.parse(localStorage.getItem('expenselist'));
+const Filter = () => {
+  const [expenselist, setExpenselist] = useState([]);
+  const [filteredExpenses, setFilteredExpenses] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  useEffect(() => {
+    const storedExpenses = JSON.parse(localStorage.getItem('expenselist')) || [];
     setExpenselist(storedExpenses);
     setFilteredExpenses(storedExpenses);
   }, []);
 
-  const categoryChange=(event)=>{
-    const category =event.target.value;
+  const categoryChange = (event) => {
+    const category = event.target.value;
     setSelectedCategory(category);
 
-    if(category=== 'All'){
+    if (category === 'All') {
       setFilteredExpenses(expenselist);
-    }
-    else{
-      const filteredList =expenselist.filter(expense => expense.category === category);
+    } else {
+      const filteredList = expenselist.filter((expense) => expense.category === category);
       setFilteredExpenses(filteredList);
     }
   };
 
   return (
-    <div className='text-black dark:text-white '>
-      <h1 className='font-bold text-3xl mb-4 text-center'>Filter Expense</h1>
+    <div className="text-black dark:text-white min-h-screen">
+      <h1 className="font-bold text-3xl mb-4 text-center">Filter Expense</h1>
       <div>
-        <label htmlFor="category" className='block mb-2'>Select Category</label>
-        <select name="category" id="category" onChange={categoryChange} value={selectedCategory} className='w-full p-2 border '>
+        <label htmlFor="category" className="block mb-2">
+          Select Category
+        </label>
+        <select
+          name="category"
+          id="category"
+          onChange={categoryChange}
+          value={selectedCategory}
+          className="w-full p-2 border text-black"
+        >
           <option value="All">All</option>
           <option value="Food">Food</option>
           <option value="Transport">Transport</option>
@@ -36,32 +45,9 @@ const Filter = () => {
           <option value="Others">Others</option>
         </select>
       </div>
-      {/* displaying the data that is filtered */}
-
-      <div className='overflow-x-auto bg-white dark:bg-[#2A2929] mt-5 rounded-lg shadow-lg'>
-        <table className='min-w-full border'>
-          <thead className=''>
-            <tr className='border-b border-gray-200 dark:bg-border-gray-600'>
-              <th className='py-2 px-4 text-left'>Name</th>
-              <th className='py-2 px-4 text-left'>Category</th>
-              <th className='py-2 px-4 text-left'>Amount</th>
-              <th className='py-2 px-4 text-left'>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredExpenses.map((expense, index)=> (
-            <tr key={index} className='border-b border-gray-200 dark:bg-border-gray-600'>
-              <td className='py-2 px-4 '>{expense.name}</td>
-              <td className='py-2 px-4 '>{expense.category}</td>
-              <td className='py-2 px-4 '>{expense.amount}</td>
-              <td className='py-2 px-4 '>{expense.date}</td>
-            </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ExpenseTable expenses={filteredExpenses} />
     </div>
-  )
-}
+  );
+};
 
-export default Filter
+export default Filter;

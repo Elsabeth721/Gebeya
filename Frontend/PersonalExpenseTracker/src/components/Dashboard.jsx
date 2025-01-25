@@ -14,22 +14,21 @@ const Dashboard = () => {
 
   const allowedCategories = ["Food", "Transport", "Entertainment", "Others"];
 
-  // Group expenses by month
   const groupedByMonth = expenses.reduce((acc, expense) => {
     const month = new Date(expense.date).getMonth();
-    acc[month] = (acc[month] || 0) + parseFloat(expense.amount); // Ensure amount is treated as a number
+    acc[month] = (acc[month] || 0) + parseFloat(expense.amount); 
     return acc;
   }, {});
 
-  // Group expenses by category
+  
   const groupedByCategory = expenses.reduce((acc, expense) => {
     if (allowedCategories.includes(expense.category)) {
-      acc[expense.category] = (acc[expense.category] || 0) + parseFloat(expense.amount); // Ensure amount is treated as a number
+      acc[expense.category] = (acc[expense.category] || 0) + parseFloat(expense.amount); 
     }
     return acc;
   }, {});
 
-  // Data for Bar chart
+
   const barData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
@@ -43,7 +42,7 @@ const Dashboard = () => {
     ],
   };
 
-  // Data for Doughnut chart
+
   const categoryKeys = Object.keys(groupedByCategory);
   const categoryColors = categoryKeys.map((_, i) => `hsl(${(i * 360) / categoryKeys.length}, 70%, 50%)`);
 
