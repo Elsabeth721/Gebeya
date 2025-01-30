@@ -60,7 +60,7 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
-        <DarkModeToggle />
+        <DarkModeToggle/>
       </div>
 
       {isOpen && (

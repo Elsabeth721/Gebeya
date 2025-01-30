@@ -12,7 +12,7 @@ const HomePage = () => {
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
             Easily manage your expenses, filter by categories, and track your financial journey.
           </p>
-          <button className="bg-purple-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-purple-700 transition ease-in-out">
+          <button className="bg-slate-400 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-purple-700 transition ease-in-out">
             Get Started
           </button>
         </div>
